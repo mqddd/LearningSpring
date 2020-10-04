@@ -1,0 +1,23 @@
+.sideMenu{
+    background-color: white;
+    z-index: 1000;
+    position: absolute;
+    transition: 0.3s;
+    left: -1000px;
+    box-shadow: 2px 1px 5px 0px gray;
+}
+
+.workspace{
+    overflow: auto;
+    background-color: lightgray;
+}
+
+.card{
+    background-color: white;
+    flex-shrink: 0;
+    box-shadow: 2px 1px 5px 0px gray;
+}
+
+.tab{
+    flex-direction: column;
+}
