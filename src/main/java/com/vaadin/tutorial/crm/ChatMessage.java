@@ -1,9 +1,5 @@
 package com.vaadin.tutorial.crm;
 
-import org.springframework.context.annotation.Bean;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.UnicastProcessor;
-
 public class ChatMessage {
     private String from;
     private String message;
