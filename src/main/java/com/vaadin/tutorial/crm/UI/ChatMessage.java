@@ -1,4 +1,4 @@
-package com.vaadin.tutorial.crm;
+package com.vaadin.tutorial.crm.UI;
 
 public class ChatMessage {
     private String from;

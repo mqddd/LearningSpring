@@ -1,5 +1,7 @@
 package com.vaadin.tutorial.crm;
 
+import com.vaadin.tutorial.crm.UI.ChatMessage;
+import com.vaadin.tutorial.crm.UI.MainView;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

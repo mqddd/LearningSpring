@@ -1,4 +1,4 @@
-package com.vaadin.tutorial.crm;
+package com.vaadin.tutorial.crm.UI;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
