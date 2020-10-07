@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.awt.datatransfer.FlavorEvent;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;

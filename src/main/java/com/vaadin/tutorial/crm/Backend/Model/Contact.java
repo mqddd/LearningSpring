@@ -24,14 +24,14 @@ public class Contact extends AbstractEntity implements Cloneable {
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Contact.Status status;
 
     @Email
     @NotNull
     @NotEmpty
-    private String email;
+    private String email = "";
 
     public String getFirstName() {
         return firstName;
