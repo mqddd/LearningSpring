@@ -1,6 +1,8 @@
 package com.vaadin.tutorial.crm.UI.ModernWebApp;
 
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
@@ -11,20 +13,30 @@ import com.vaadin.tutorial.crm.Backend.Service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Route(value = "app")
+@CssImport("./css/MWA-styles.css")
 public class MainView extends VerticalLayout {
 
     private ContactService contactService;
     private Grid<Contact> grid = new Grid<>(Contact.class);
     private TextField filterText = new TextField();
+    private ContactForm form;
 
     @Autowired
     public MainView(ContactService contactService) {
         this.contactService = contactService;
         addClassName("list-view");
         setSizeFull();
+
         configureFilter();
         configureGrid();
-        add(filterText, grid);
+
+        form = new ContactForm();
+
+        Div content = new Div(grid, form);
+        content.addClassName("content");
+        content.setSizeFull();
+
+        add(filterText, content);
         updateList();
     }
 
