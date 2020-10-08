@@ -48,7 +48,7 @@ public class MainView extends VerticalLayout {
     }
 
     private void updateList() {
-        grid.setItems(contactService.findAll());
+        grid.setItems(contactService.findAll(filterText.getValue()));
     }
 
 }
