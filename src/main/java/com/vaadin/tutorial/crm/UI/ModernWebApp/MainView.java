@@ -1,5 +1,7 @@
 package com.vaadin.tutorial.crm.UI.ModernWebApp;
 
+import com.vaadin.flow.component.ComponentEvent;
+import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
@@ -7,8 +9,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.shared.Registration;
 import com.vaadin.tutorial.crm.Backend.Model.Company;
 import com.vaadin.tutorial.crm.Backend.Model.Contact;
+import com.vaadin.tutorial.crm.Backend.Service.CompanyService;
 import com.vaadin.tutorial.crm.Backend.Service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,7 +26,7 @@ public class MainView extends VerticalLayout {
     private ContactForm form;
 
     @Autowired
-    public MainView(ContactService contactService) {
+    public MainView(ContactService contactService, CompanyService companyService) {
         this.contactService = contactService;
         addClassName("list-view");
         setSizeFull();
@@ -30,7 +34,7 @@ public class MainView extends VerticalLayout {
         configureFilter();
         configureGrid();
 
-        form = new ContactForm();
+        form = new ContactForm(companyService.findAll());
 
         Div content = new Div(grid, form);
         content.addClassName("content");
@@ -62,5 +66,4 @@ public class MainView extends VerticalLayout {
     private void updateList() {
         grid.setItems(contactService.findAll(filterText.getValue()));
     }
-
 }
