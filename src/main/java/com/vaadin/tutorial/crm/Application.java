@@ -4,6 +4,7 @@ import com.vaadin.tutorial.crm.UI.ChatMessage;
 import com.vaadin.tutorial.crm.UI.MainView;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import reactor.core.publisher.Flux;
@@ -12,7 +13,7 @@ import reactor.core.publisher.UnicastProcessor;
 /**
  * The entry point of the Spring Boot application.
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = ErrorMvcAutoConfiguration.class)
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
