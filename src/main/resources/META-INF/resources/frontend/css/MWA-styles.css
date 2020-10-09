@@ -18,3 +18,19 @@
         display: none;
     }
 }
+
+/* Main Layout */
+
+a[highlight] {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.header {
+    padding: 0 1rem;
+}
+
+.header h1.logo {
+    font-size: 1em;
+    margin: 1rem;
+}

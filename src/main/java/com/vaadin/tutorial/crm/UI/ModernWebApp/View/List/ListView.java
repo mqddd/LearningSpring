@@ -1,4 +1,4 @@
-package com.vaadin.tutorial.crm.UI.ModernWebApp;
+package com.vaadin.tutorial.crm.UI.ModernWebApp.View.List;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -8,16 +8,18 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.tutorial.crm.Backend.Model.Company;
 import com.vaadin.tutorial.crm.Backend.Model.Contact;
 import com.vaadin.tutorial.crm.Backend.Service.CompanyService;
 import com.vaadin.tutorial.crm.Backend.Service.ContactService;
+import com.vaadin.tutorial.crm.UI.ModernWebApp.MainLayout;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Route(value = "app")
-@CssImport("./css/MWA-styles.css")
-public class MainView extends VerticalLayout {
+@Route(value = "app", layout = MainLayout.class)
+@PageTitle("Contacts | My Vaadin App")
+public class ListView extends VerticalLayout {
 
     private ContactService contactService;
     private Grid<Contact> grid = new Grid<>(Contact.class);
@@ -25,7 +27,7 @@ public class MainView extends VerticalLayout {
     private ContactForm form;
 
     @Autowired
-    public MainView(ContactService contactService, CompanyService companyService) {
+    public ListView(ContactService contactService, CompanyService companyService) {
         this.contactService = contactService;
         addClassName("list-view");
         setSizeFull();

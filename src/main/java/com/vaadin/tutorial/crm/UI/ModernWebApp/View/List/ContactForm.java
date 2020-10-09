@@ -1,4 +1,4 @@
-package com.vaadin.tutorial.crm.UI.ModernWebApp;
+package com.vaadin.tutorial.crm.UI.ModernWebApp.View.List;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
