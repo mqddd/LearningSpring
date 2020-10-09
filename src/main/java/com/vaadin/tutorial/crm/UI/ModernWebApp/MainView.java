@@ -1,8 +1,10 @@
 package com.vaadin.tutorial.crm.UI.ModernWebApp;
 
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
@@ -28,7 +30,6 @@ public class MainView extends VerticalLayout {
         addClassName("list-view");
         setSizeFull();
 
-        configureFilter();
         configureGrid();
 
         form = new ContactForm(companyService.findAll());
@@ -40,9 +41,28 @@ public class MainView extends VerticalLayout {
         content.addClassName("content");
         content.setSizeFull();
 
-        add(filterText, content);
+        add(getToolbar(), content);
         updateList();
         closeEditor();
+    }
+
+    private HorizontalLayout getToolbar() {
+        filterText.setPlaceholder("Filter by name...");
+        filterText.setClearButtonVisible(true);
+        filterText.setValueChangeMode(ValueChangeMode.LAZY);
+        filterText.addValueChangeListener(e -> updateList());
+
+        Button addContactButton = new Button("Add Contact");
+        addContactButton.addClickListener(click -> addContact());
+
+        HorizontalLayout toolbar = new HorizontalLayout(filterText, addContactButton);
+        toolbar.addClassName("toolbar");
+        return toolbar;
+    }
+
+    private void addContact() {
+        grid.asSingleSelect().clear();
+        editContact(new Contact());
     }
 
     private void saveContact(ContactForm.SaveEvent event) {
